@@ -436,10 +436,7 @@ img {
   display: flex;
   gap: 15px;
   z-index: 3;
-<<<<<<< HEAD
   padding-top: 10px;
-=======
->>>>>>> 2e2c9e97ae04c35e522a138567821b5a901345f4
 }
 
 .tooltip-inner {
