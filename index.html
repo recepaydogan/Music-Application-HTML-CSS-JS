@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Player</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css"
+    />
+    <link rel="shortcut icon" href="pngwing.com.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+
+  <body>
+    <main class="mainDiv">
+      <div class="maindiv-header">
+        <button class="open">
+          <i
+            class="fa-light fa-arrow-up-right-and-arrow-down-left-from-center"
+          ></i>
+        </button>
+      </div>
+      <div class="playlist-container">
+        <div class="playlist-nav">
+          <div class="tracklist-conroller-wrapper">
+            <button
+              class="tracklist-conroller btn-liked"
+              data-custom-class="custom-tooltip"
+              data-toggle="tooltip"
+              title="Click for Liked Music!"
+              data-placement="bottom"
+            >
+              <i class="fa-regular fa-circle-heart"></i>
+            </button>
+
+            <button
+              data-toggle="tooltip"
+              title="Click for All  Songs!"
+              data-placement="bottom"
+              class="tracklist-conroller btn-all"
+            >
+              <i class="fa-sharp fa-light fa-music"></i>
+            </button>
+          </div>
+
+          <button class="close-playlist">
+            <i
+              class="fa-light fa-arrow-down-left-and-arrow-up-right-to-center"
+            ></i>
+          </button>
+        </div>
+
+        <div class="playlist" id="playlist">
+          <!-- Şarkı listesi buraya eklenecek -->
+        </div>
+      </div>
+      <div class="header-container">
+        <div class="titleDiv" id="1">
+          <img src="" alt="" />
+          <h3 class="creator" id="creator"></h3>
+        </div>
+        <audio id="audio">
+          <source src="" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+        <div class="media-control-wrapper" id="2">
+          <div class="musicControlDiv">
+            <i class="icon fa-sharp fa-light fa-repeat-1" id="repeatSong"></i>
+            <i class="icon fa-sharp fa-light fa-backward" id="prev"></i>
+            <i class="icon fa-sharp fa-light fa-play" id="play"></i>
+            <i class="icon fa-color fa-sharp fa-light fa-forward" id="next"></i>
+            <i class="icon fa-sharp fa-regular fa-shuffle" id="shuffleIcon"></i>
+          </div>
+
+          <div class="progress-wrapper">
+            <span id="currentTime">0:00</span>
+            <input
+              class="track-seek"
+              value="0"
+              min="0"
+              max="100"
+              type="range"
+            /><span id="totalTime">0:00</span>
+          </div>
+        </div>
+        <div class="volume-control">
+          <i class="fa-light volume-icon fa-volume-high"></i>
+          <input
+            type="range"
+            class="volume-input"
+            max="1"
+            min="0"
+            value="1"
+            step="0.1"
+          />
+        </div>
+      </div>
+    </main>
+
+    <script>
+      $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
+    <script src="collection.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

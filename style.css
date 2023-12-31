@@ -1,0 +1,470 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("img/back.webp");
+  background-position: center;
+  background-size: cover;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.playlist-container {
+  opacity: 0;
+  position: fixed;
+
+  pointer-events: none;
+}
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+
+  /* 50% {
+    opacity: 0.5;
+   
+  } */
+
+  70% {
+    opacity: 1;
+  }
+}
+
+.mainDiv {
+  background-color: #100f0f;
+  width: 658px;
+  height: 556px;
+  transition: all 0.2s ease-out;
+  color: #ffffff;
+  border-radius: 15px;
+}
+.media-control-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 50px 30px;
+  gap: 15px;
+}
+.volume-control {
+  display: none;
+}
+.playlist {
+  padding: 23px 27px;
+}
+.maindiv-header {
+  font-size: 25px;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 20px;
+}
+.playlist-nav {
+  display: flex;
+  color: #fff;
+  font-size: 25px;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 17px 64px;
+  position: sticky;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+  background-color: #100f0f;
+}
+.close-playlist,
+.open {
+  color: #fff;
+  background-color: transparent;
+  width: 20px;
+  border: none;
+  outline: none;
+  font-size: 25px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+.playlist-item {
+  display: grid;
+
+  cursor: pointer;
+  padding: 15px 25px;
+  list-style: none;
+  color: white;
+  background: linear-gradient(to right, #141e30, #243b55);
+  width: 100%;
+  margin: 12px 0;
+  border-radius: 15px;
+  font-size: 17px;
+  min-height: 58px;
+  position: relative;
+  grid-template-columns: 3fr 0.2fr 0.2fr;
+}
+.playlist-item:hover {
+  background: linear-gradient(to left, #141e25, #243b50);
+}
+.playlist-item p {
+  pointer-events: none;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.imgDiv {
+  width: 100%;
+  height: 225px;
+}
+
+img {
+  width: 100%;
+  height: 275px;
+  object-fit: cover;
+}
+.titleDiv {
+  text-align: center;
+}
+.title {
+  margin: 0;
+  font-size: 25px;
+}
+.creator {
+  margin: 5px 0px;
+  font-size: 20px;
+  font-weight: 400;
+  padding-top: 35px;
+}
+.progressDiv {
+  background: white;
+  height: 4px;
+  width: 90%;
+  margin: 30px auto;
+  cursor: pointer;
+}
+.progress-wrapper {
+  max-height: 64px;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.progress {
+  width: 100%;
+}
+.timeDiv {
+  top: 34px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 26px;
+}
+.musicControlDiv {
+  display: flex;
+  justify-content: center;
+}
+.icon {
+  margin: 0px 30px;
+  font-size: 30px;
+  color: gray;
+  cursor: pointer;
+  max-width: 18px;
+}
+.icon:hover {
+  color: rgb(245, 236, 236);
+}
+
+.track-seek {
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #4158d0;
+  background-image: linear-gradient(
+    43deg,
+    #4158d0 0%,
+    #c850c0 46%,
+    #ffcc70 100%
+  );
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.track-seek::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #4c00ff;
+  background-image: linear-gradient(160deg, #4900f5 0%, #80d0c7 100%);
+  cursor: pointer;
+}
+
+.track-seek::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #0093e9;
+  background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+  cursor: pointer;
+}
+.track-seek[type="range"] {
+  height: 4px;
+  margin: 10px 0;
+  width: 100%;
+  appearance: none;
+  cursor: pointer;
+}
+
+/* Hover olduğunda veya range input üzerine gelindiğinde thumb görünür yapılır */
+
+*::-webkit-scrollbar {
+  height: 16px;
+  width: 7px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #4f4d8b;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background-color: #7c79db;
+}
+
+.loading-wave {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 28px;
+}
+
+.loading-bar {
+  width: 4px;
+  height: 15px;
+  margin: 0 1px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.loading-bar:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.loading-bar:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.loading-bar:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.loading-bar:nth-child(5) {
+  animation-delay: 0.4s;
+}
+@keyframes loading-wave-animation {
+  0% {
+    height: 15px;
+  }
+
+  50% {
+    height: 25px;
+  }
+
+  100% {
+    height: 51px;
+  }
+}
+
+.animationActive {
+  animation: loading-wave-animation 3.1s cubic-bezier(0, 0, 0.9, -2.11) infinite;
+}
+
+.mainDiv.active .media-control-wrapper {
+  padding: 0;
+  gap: 0;
+}
+.mainDiv.active .playlist-container {
+  background-color: #100f0f;
+  position: static;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+
+  pointer-events: auto;
+  z-index: 1;
+}
+.mainDiv.active .header-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr 2fr 1fr);
+  width: 100%;
+  background-color: #000000;
+  column-gap: 20px;
+  padding: 20px 10px;
+  bottom: 0;
+  max-height: 117px;
+  position: sticky;
+  z-index: 2;
+}
+.mainDiv.active .volume-control {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainDiv.active .titleDiv {
+  display: flex;
+  justify-content: center;
+  font-size: 13px !important;
+  gap: 10px;
+}
+.mainDiv.active .titleDiv img {
+  flex: 1;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  align-self: center;
+}
+.mainDiv.active .titleDiv h3 {
+  font-size: 14px;
+  flex: 1;
+}
+.mainDiv.active .titleDiv .creator {
+  margin: 5px 0px;
+  font-size: 14px;
+  font-weight: 400;
+  padding: 0;
+  align-self: center;
+}
+
+.mainDiv.active .musicControlDiv {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.mainDiv.active .track-seek {
+  height: 4px;
+  margin: 10px 0;
+  width: 55%;
+  appearance: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+.mainDiv.active .progress-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px !important;
+  gap: 10px;
+}
+.mainDiv.active .maindiv-header {
+  display: none;
+}
+
+.mainDiv.active {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-content: space-between;
+}
+.volume-input {
+  width: 35% !important;
+  accent-color: #760380;
+}
+
+.volume-icon {
+  min-width: 30px;
+}
+#shuffleIcon.shuffling {
+  color: #45c270;
+  position: relative;
+}
+
+.trackSelected {
+  box-shadow: inset 41px 41px 82px #8707ff91, inset -41px -41px 82px #760380;
+}
+
+#repeatSong.repeat {
+  position: relative;
+  color: #45c270;
+}
+
+.like-icon {
+  opacity: 0;
+  place-self: center end;
+  font-size: 23px;
+}
+
+.like-icon.active {
+  color: #45c270;
+  opacity: 1 !important;
+}
+.tracklist-conroller {
+  max-width: fit-content !important;
+  font-size: 18px;
+  padding: 7px 15px;
+  background: #760380;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border-radius: 10px;
+}
+.tracklist-conroller.active {
+  color: #760380;
+  background-color: #fff;
+}
+.tracklist-conroller:active {
+  transform: scale(1.1);
+}
+
+.tracklist-conroller-wrapper {
+  display: flex;
+  gap: 15px;
+  z-index: 3;
+}
+
+.tooltip-inner {
+  background-color: #760380 !important;
+}
+
+@media (max-width: 578px) {
+  .mainDiv.active .musicControlDiv {
+    font-size: 8px;
+    margin-bottom: 5px;
+    width: 100%;
+  }
+  .mainDiv.active .header-container {
+    grid-template-columns: repeat(1, 0.5fr 2fr 0fr);
+  }
+  .playlist {
+    width: 100%;
+  }
+  /* .mainDiv.active .playlist-container {
+    width: 89%;
+  } */
+  .icon {
+    margin: 0px 20px;
+    font-size: 24px;
+  }
+  .mainDiv.active .volume-control {
+    display: none;
+  }
+  .like-icon {
+    margin-right: 13px;
+  }
+}
