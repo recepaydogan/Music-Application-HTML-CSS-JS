@@ -24,7 +24,7 @@ const volumeSliderİcon = document.querySelector(".volume-icon");
 let isValumeMuted = false;
 let isFavoritedShowing = false;
 let playListItem = [];
-let waveBars = [];
+
 let currentIcon;
 let likedTracks = [];
 
@@ -267,7 +267,6 @@ tracks.forEach((track, index) => {
     animationContainer.appendChild(animation);
   }
 
-  waveBars.push(animationContainer);
   li.appendChild(animationContainer);
   playlistContainer.appendChild(li);
   playListItem.push(li);
@@ -307,7 +306,7 @@ showLikedTracks.addEventListener("click", () => {
         (playlistItem) => playlistItem === likedTrack
       );
     });
-
+    console.log(likedTrackIndexes);
     let indexesToRemove = allIndexes.filter(
       (index) => !likedTrackIndexes.includes(index)
     );
@@ -321,6 +320,7 @@ showLikedTracks.addEventListener("click", () => {
     playListItem.forEach((item, index) => {
       item.children[0].children[0].textContent = index + 1;
     });
+
     playlistContainer.textContent = "";
     likedTracks.forEach((track) => playlistContainer.appendChild(track));
     isFavoritedShowing = true;
@@ -343,7 +343,9 @@ showAllTracks.addEventListener("click", () => {
   playlistContainer.textContent = "";
   playListItem.forEach((track) => playlistContainer.appendChild(track));
   isFavoritedShowing = false;
-  playTrack();
+  trackIndex = playListItem.findIndex((item) =>
+    item.classList.contains("trackSelected")
+  );
 });
 
 // Function to move to the previous track
@@ -352,6 +354,7 @@ function indexArrangmentBack() {
     ? getRandomIndex()
     : (trackIndex - 1 + tracks.length) % tracks.length;
   showBeatAnimation(playListItem[trackIndex]);
+
   loadTrack();
   playTrack();
 }
@@ -362,6 +365,7 @@ function indexArrangmentForward() {
     ? getRandomIndex()
     : (trackIndex + 1 + tracks.length) % tracks.length;
   showBeatAnimation(playListItem[trackIndex]);
+
   loadTrack();
   playTrack();
 }
